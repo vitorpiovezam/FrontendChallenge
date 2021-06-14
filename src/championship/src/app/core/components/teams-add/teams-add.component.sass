@@ -1,0 +1,36 @@
+@import 'node_modules/rupture-sass/rupture'
+
+main 
+  margin-bottom: 3em
+  border-radius: 10px
+
+  small 
+    display: block
+    margin-bottom: 3em
+
+  form
+    max-width: 600px
+    @include above(500px)
+      min-width:500px
+    &.--team
+      min-height: 290px
+      margin-bottom: 2em
+
+  mat-form-field
+    display: block
+
+  .icon
+    &:hover 
+      cursor: pointer
+
+  .team 
+  &--shield 
+    margin-bottom: 3em
+
+h2 
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+::ng-deep .mat-horizontal-content-container
+  padding: 0 !important

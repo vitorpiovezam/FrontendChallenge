@@ -1,0 +1,8 @@
+<ng-container>
+  <div class="card">
+    <div class="team" (click)="setWinner(i)" *ngFor="let team of match; let i = index">
+      <img width="50px" [src]="team.shieldUrl">
+      <h2 [innerHTML]="team.name"></h2>
+    </div>
+  </div>
+</ng-container>

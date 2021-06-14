@@ -1,0 +1,43 @@
+<main>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+
+    <mat-step>
+      <ng-template matStepperIcon="Participantes do torneio">
+        <mat-icon>account_circle</mat-icon>
+      </ng-template>
+
+      <ng-template matStepLabel>Participantes do torneio</ng-template>
+
+      <div class="container">
+        <main>
+          <app-teams-add (teamList)="onTeamAdded($event)" (isValid)="onValidateTeam($event)" #teamsAddComponent></app-teams-add>
+          <button mat-raised-button color="primary" [disabled]="!validTeams" (click)="startChampionship()">Ir para o torneio</button><br>
+          <small class="warn" *ngIf="![2,4,6,8].includes(teams.length)">O torneio precisa ser composto por 2, 4, 6 ou 8 equipes</small>
+        </main>
+      </div>
+    </mat-step>
+
+    <mat-step label="Torneio">
+      <ng-template matStepperIcon="edit">
+        <mat-icon>sports_esports</mat-icon>
+      </ng-template>
+      <div class="container">
+        <app-teams-championship #teamsChampionshipComponent [teams]="teams"></app-teams-championship>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Resultado</ng-template>
+
+      <p>You are now done.</p>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+  <button mat-raised-button color="secondary" class="restart" (click)="restartChampionship()">Criar novo campeonato</button>
+</main>

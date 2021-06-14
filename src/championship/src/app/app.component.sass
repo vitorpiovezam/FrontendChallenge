@@ -1,0 +1,26 @@
+@import 'node_modules/rupture-sass/rupture'
+
+::ng-deep .mat-horizontal-stepper-header-container
+  padding: 0 1em
+  background: #86d4d4
+
+::ng-deep .mat-horizontal-stepper-header
+  padding: 0 !important
+
+::ng-deep .mat-horizontal-stepper-header
+  pointer-events: none !important
+
+.container
+  background: whitesmoke
+  min-height: 100vh
+  padding: 20px 10px
+
+  @include above(500px)
+    padding: 2em 4em 10em 4em
+    display: flex
+    justify-content: center
+
+.restart 
+  position: fixed
+  bottom: 4em
+  right: 4em

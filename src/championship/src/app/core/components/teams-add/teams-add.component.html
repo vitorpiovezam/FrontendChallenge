@@ -1,0 +1,42 @@
+<ng-container>
+  <main>
+    <form [formGroup]="form">
+      <h1> Adicione os times</h1>
+      <small>O torneio precisa ser composto por times pares</small>
+      <ng-container formArrayName="teams" *ngFor="let form of teams().controls; let i = index">
+        <form class="--team" [formGroupName]="i">
+          <h2>
+            <span>
+              Time {{ i + 1 }}
+              {{ teams().controls[i].value.name !== '' ? '|' : '' }}
+              {{ teams().controls[i].value.name }}
+            </span>
+            <span>
+              <mat-icon class="icon" matTooltip="Atribuir imagem randomica" (click)="getRandomPhoto(i)">image</mat-icon>
+              <mat-icon class="icon" (click)="removeTeam(i)">delete</mat-icon>
+            </span>
+          </h2>
+          
+
+          <mat-form-field>
+            <mat-label>Nome do time {{ i + 1 }}*</mat-label>
+            <input matInput name="name" formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Escudo do time {{ i + 1 }}</mat-label>
+            <input matInput name="shieldUrl" formControlName="shieldUrl" placeholder="Insira uma URL com a imagem">
+          </mat-form-field>
+
+          <img class="team--shield" width="90px" [src]="teams().controls[i].value.shieldUrl">
+        </form>
+      </ng-container>
+
+      <button mat-raised-button color="secondary" (click)="addTeam()" [disabled]="addIsDisabled()">Adicionar Time</button>
+      <p class="warn" *ngIf="addIsDisabled()">Voce chegou no limite de {{ max }} times</p>
+    </form>
+  </main>
+
+<pre>
+</pre>
+</ng-container>

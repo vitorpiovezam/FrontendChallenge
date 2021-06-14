@@ -1,0 +1,12 @@
+<ng-container>
+  <main>
+    <div class="phase" *ngFor="let phase of phases; let i = index">
+      <h2>{{ phasesLabels[i] }}</h2>
+
+      <div class="matches">
+          <app-championship-match *ngFor="let match of matchesPerPhase[i][0]" [match]="match">
+        </app-championship-match>
+      </div>
+    </div>
+  </main>
+</ng-container>
